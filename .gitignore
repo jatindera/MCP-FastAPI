@@ -1,0 +1,17 @@
+# Ignore virtual environments in all subdirectories
+**/.venv/
+
+# Ignore Python bytecode and cache files
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore .env files in all subdirectories
+**/.env
+
+# Optional: Ignore other Python environment artifacts
+*.log
+*.sqlite3
+*.egg-info/
+dist/
+build/
