@@ -5,32 +5,11 @@ You can create an MCP server from one FastAPI app, and mount it to a different a
 from fastapi import FastAPI
 from fastapi_mcp import FastApiMCP
 from pydantic import BaseModel
-from fastapi.responses import JSONResponse
-
-app = FastAPI()
-
-class GreetRequest(BaseModel):
-    name: str
-
-class AddRequest(BaseModel):
-    num1: float
-    num2: float
-
-@app.post("/greet", operation_id="greet_user_by_name")
-async def greet(request: GreetRequest):
-    """Greet the user with a personalized message."""
-    return JSONResponse(content={"message": f"Hellooo {request.name}"})
-
-@app.post("/add", operation_id="add_two_numbers")
-async def add_numbers(request: AddRequest):
-    """Add two numbers and return the result."""
-    result = request.num1 + request.num2
-    return JSONResponse(content={"result": result})
-
+from apis_tools import app
 # Take the FastAPI app only as a source for MCP server generation
 mcp = FastApiMCP(
     app,
-    name = "MCP using FastAPI and React",
+    name = "MCP Implementation",
     describe_all_responses=True,
     describe_full_response_schema=True
     )
